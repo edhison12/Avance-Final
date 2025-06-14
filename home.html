@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" class="transition-colors" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio - Concesionario de Autos</title>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+
+  <header class="bg-green-200 dark:bg-green-700 shadow p-4">
+    <nav class="container mx-auto flex flex-wrap items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="https://us.123rf.com/450wm/themoderncanvas/themoderncanvas1901/themoderncanvas190100012/118845971-icono-de-super-coche-de-concesionario-de-estilo-autom%C3%A1tico-con-silueta-de-icono-de-veh%C3%ADculo-deportiv.jpg" alt="Logo Concesionario" class="w-16 rounded" />
+        <button id="toggleDark" class="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-3 py-1 rounded hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+          Modo Oscuro
+        </button>
+      </div>
+      <ul class="flex gap-6 text-lg font-semibold flex-wrap">
+        <li><a href="home.html" class="hover:text-blue-600 dark:hover:text-blue-400">Inicio</a></li>
+        <li><a href="catalog.html" class="hover:text-blue-600 dark:hover:text-blue-400">Catálogo</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600 dark:hover:text-blue-400">Contacto</a></li>
+        <li><a href="map.html" class="hover:text-blue-600 dark:hover:text-blue-400">Ubicación</a></li>
+        <li><a href="minigame.html" class="hover:text-blue-600 dark:hover:text-blue-400">Minijuego</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-grow container mx-auto px-6 py-10 max-w-6xl">
+    <section class="hero-section text-center mb-16">
+      <h1 class="text-5xl font-bold mb-4">Encuentra el Auto de Tus Sueños</h1>
+      <p class="text-lg mb-6 max-w-xl mx-auto">Descubre nuestra exclusiva colección de vehículos nuevos y usados.</p>
+      <button onclick="location.href='catalog.html'" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Ver Catálogo</button>
+    </section>
+
+    <section class="featured-cars mb-16">
+      <h2 class="text-3xl font-semibold mb-8 text-center">Vehículos Destacados</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Tarjeta 1 -->
+        <div class="car-card bg-gray-100 dark:bg-gray-800 rounded shadow p-4 flex flex-col h-[550px] transition-transform hover:scale-105 duration-300">
+          <img src="https://acnews.blob.core.windows.net/imgnews/large/NAZ_74f3a78d5b18495c9d68110900875069.jpg"
+               alt="Carro Destacado 1"
+               class="rounded mb-4 w-full h-48 object-cover" />
+          <h3 class="text-xl font-semibold mb-1">Deportivo X</h3>
+          <p class="mb-1 flex-grow">Un potente y elegante auto deportivo.</p>
+          <span class="font-bold text-lg bg-green-200 dark:bg-green-600 text-center rounded px-4 py-2">
+          $55,000
+          </span>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="car-card bg-gray-100 dark:bg-gray-800 rounded shadow p-4 flex flex-col h-[550px] transition-transform hover:scale-105 duration-300">
+          <img src="https://lacddam.lexusasia.com/Peru/Cars/lx/lx-home/exterior/01_1920x800.jpg"
+               alt="Carro Destacado 2"
+               class="rounded mb-4 w-full h-48 object-cover" />
+          <h3 class="text-xl font-semibold mb-1">SUV Familiar</h3>
+          <p class="mb-1 flex-grow">Espacioso y seguro para toda la familia.</p>
+          <span class="font-bold text-lg bg-green-200 dark:bg-green-600 text-center rounded px-4 py-2">$38,000</span>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="car-card bg-gray-100 dark:bg-gray-800 rounded shadow p-4 flex flex-col h-[550px] transition-transform hover:scale-105 duration-300">
+          <img src="https://www.suzuki.com.pe/media/bpaamq2n/foto_0000000320220526180806_disen_o-exterior.jpg"
+               alt="Carro Destacado 3"
+               class="rounded mb-4 w-full h-48 object-cover" />
+          <h3 class="text-xl font-semibold mb-1">Compacto Urbano</h3>
+          <p class="mb-1 flex-grow">Ideal para la ciudad, bajo consumo. lorem50</p>
+          <span class="font-bold text-lg bg-green-200 dark:bg-green-600 text-center rounded px-4 py-2">$22,500</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials mb-16">
+      <h2 class="text-3xl font-semibold mb-8 text-center">Lo que Dicen Nuestros Clientes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="testimonial-card bg-gray-100 dark:bg-gray-800 rounded shadow p-6 transition-colors duration-300">
+          <p class="mb-4">"Excelente servicio y una gran variedad de autos. ¡Muy contento con mi compra!"</p>
+          <span class="font-semibold">- Juan Pérez</span>
+        </div>
+        <div class="testimonial-card bg-gray-100 dark:bg-gray-800 rounded shadow p-6 transition-colors duration-300">
+          <p class="mb-4">"El personal fue muy amable y me ayudó a encontrar el auto perfecto para mis necesidades."</p>
+          <span class="font-semibold">- María López</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenedor React para cuestionario -->
+    <section id="reactQuizRoot" class="mb-16 bg-gray-100 dark:bg-gray-800 p-6 rounded shadow max-w-3xl mx-auto">
+      <!-- React montará aquí -->
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-100 dark:bg-gray-800 text-center p-6 text-gray-700 dark:text-gray-300 transition-colors duration-300">
+    <p>&copy; 2025 Concesionario de Autos. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- React, ReactDOM, Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Script React con Babel -->
+  <script type="text/babel">
+
+    const { useState } = React;
+
+    function Quiz() {
+      const questions = [
+        {
+          question: "¿Cuál es el mejor tipo de vehículo para la ciudad?",
+          options: ["Camión", "Compacto Urbano", "Deportivo", "SUV Familiar"],
+          answer: 1
+        },
+        {
+          question: "¿Qué tipo de vehículo es más espacioso para la familia?",
+          options: ["Deportivo", "Sedán", "SUV Familiar", "Compacto Urbano"],
+          answer: 2
+        },
+        {
+          question: "¿Cuál es un atributo clave de un auto deportivo?",
+          options: ["Velocidad y diseño elegante", "Bajo consumo", "Gran espacio", "Seguridad familiar"],
+          answer: 0
+        }
+      ];
+
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [selectedOption, setSelectedOption] = useState(null);
+      const [score, setScore] = useState(0);
+      const [showScore, setShowScore] = useState(false);
+
+      function handleOptionClick(index) {
+        setSelectedOption(index);
+      }
+
+      function handleNext() {
+        if (selectedOption === null) return;
+        if (selectedOption === questions[currentIndex].answer) {
+          setScore(score + 1);
+        }
+        setSelectedOption(null);
+        if (currentIndex + 1 < questions.length) {
+          setCurrentIndex(currentIndex + 1);
+        } else {
+          setShowScore(true);
+        }
+      }
+
+      function handleRestart() {
+        setCurrentIndex(0);
+        setSelectedOption(null);
+        setScore(0);
+        setShowScore(false);
+      }
+
+      return (
+        <div className="text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold mb-4 text-center">Cuestionario: ¿Conoces tus autos?</h2>
+
+          {showScore ? (
+            <div className="text-center">
+              <p className="text-lg mb-4">Tu puntuación es {score} de {questions.length}</p>
+              <button 
+                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+                onClick={handleRestart}
+              >
+                Volver a empezar
+              </button>
+            </div>
+          ) : (
+            <div>
+              <p className="mb-6 font-semibold text-lg">{questions[currentIndex].question}</p>
+              <ul>
+                {questions[currentIndex].options.map((option, i) => (
+                  <li 
+                    key={i} 
+                    className={`cursor-pointer rounded border px-4 py-2 mb-3 
+                      ${selectedOption === i ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700'} 
+                      hover:bg-blue-500 hover:text-white transition`}
+                    onClick={() => handleOptionClick(i)}
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+              <button 
+                className={`mt-4 px-6 py-2 rounded text-white ${selectedOption === null ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+                onClick={handleNext}
+                disabled={selectedOption === null}
+              >
+                Siguiente
+              </button>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('reactQuizRoot')).render(<Quiz />);
+
+  </script>
+
+  <script>
+    // Toggle modo oscuro
+    const btn = document.getElementById('toggleDark');
+    const htmlRoot = document.getElementById('htmlRoot');
+    btn.addEventListener('click', () => {
+      htmlRoot.classList.toggle('dark');
+    });
+  </script>
+
+</body>
+</html>

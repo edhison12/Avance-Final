@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" class="transition-colors" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minijuego - Adivina el Precio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+
+  <header class="bg-green-200 dark:bg-green-700 shadow p-4">
+    <nav class="container mx-auto flex flex-wrap items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="https://us.123rf.com/450wm/themoderncanvas/themoderncanvas1901/themoderncanvas190100012/118845971-icono-de-super-coche-de-concesionario-de-estilo-autom%C3%A1tico-con-silueta-de-icono-de-veh%C3%ADculo-deportiv.jpg" alt="Logo Concesionario" class="w-16 rounded" />
+        <button id="toggleDark" class="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-3 py-1 rounded hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+          Modo Oscuro
+        </button>
+      </div>
+      <ul class="flex gap-6 text-lg font-semibold flex-wrap">
+        <li><a href="home.html" class="hover:text-green-700 dark:hover:text-green-300">Inicio</a></li>
+        <li><a href="catalog.html" class="hover:text-green-700 dark:hover:text-green-300">Catálogo</a></li>
+        <li><a href="contact.html" class="hover:text-green-700 dark:hover:text-green-300">Contacto</a></li>
+        <li><a href="map.html" class="hover:text-green-700 dark:hover:text-green-300">Ubicación</a></li>
+        <li><a href="minigame.html" class="hover:text-green-700 dark:hover:text-green-300">Minijuego</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 py-10 max-w-4xl text-center">
+    <h1 class="text-4xl font-bold mb-4">Minijuego: Adivina el Precio del Coche</h1>
+    <p class="mb-8 text-lg">Adivina el precio exacto del coche para ganar.</p>
+
+    <div class="game-area bg-gray-100 dark:bg-gray-800 rounded p-6 max-w-md mx-auto shadow-lg">
+      <div class="car-display mb-6">
+        <img id="gameCarImage" src="https://via.placeholder.com/400x250?text=Coche+Misterioso" alt="Coche para adivinar" class="mx-auto rounded" />
+        <h3 id="gameCarName" class="mt-4 text-xl font-semibold">Coche Misterioso</h3>
+      </div>
+
+      <div class="guess-input mb-4">
+        <label for="priceGuess" class="block mb-2 font-semibold text-left">Tu Adivinanza ($):</label>
+        <input
+          type="number"
+          id="priceGuess"
+          min="0"
+          step="1000"
+          placeholder="Ej: 35000"
+          class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+        />
+      </div>
+      <button
+        id="submitGuess"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded transition mb-4"
+      >
+        Adivinar
+      </button>
+
+      <p id="gameMessage" class="game-message text-lg font-semibold text-green-700 dark:text-green-400 min-h-[1.5em]"></p>
+
+      <button
+        id="newGameButton"
+        class="hidden w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 rounded transition mt-4"
+      >
+        Jugar de Nuevo
+      </button>
+    </div>
+  </main>
+
+  <footer class="bg-gray-200 dark:bg-gray-800 text-center py-4 mt-auto">
+    <p class="text-sm">&copy; 2025 Concesionario de Autos. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleDark');
+    const htmlEl = document.getElementById('htmlRoot');
+
+    // Aplica el tema guardado al cargar la página
+    if (localStorage.theme === 'dark') {
+      htmlEl.classList.add('dark');
+      toggleBtn.textContent = 'Modo Claro';
+    } else {
+      toggleBtn.textContent = 'Modo Oscuro';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      if (htmlEl.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        toggleBtn.textContent = 'Modo Claro';
+      } else {
+        localStorage.theme = 'light';
+        toggleBtn.textContent = 'Modo Oscuro';
+      }
+    });
+  </script>
+
+  <script src="js/minigame.js"></script>
+</body>
+</html>

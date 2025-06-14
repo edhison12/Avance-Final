@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalles del Vehículo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="bg-green-200 dark:bg-green-700 shadow p-4">
+    <nav class="container mx-auto flex flex-wrap items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="https://us.123rf.com/450wm/themoderncanvas/themoderncanvas1901/themoderncanvas190100012/118845971-icono-de-super-coche-de-concesionario-de-estilo-autom%C3%A1tico-con-silueta-de-icono-de-veh%C3%ADculo-deportiv.jpg" alt="Logo Concesionario" class="w-16 rounded" />
+        <button id="toggleDark" class="bg-gray-300 dark:bg-gray-800 text-black dark:text-white px-3 py-1 rounded hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+          Modo Oscuro
+        </button>
+      </div>
+      <ul class="flex gap-4 text-lg font-semibold flex-wrap">
+        <li><a href="home.html" class="hover:text-green-700 dark:hover:text-green-300">Inicio</a></li>
+        <li><a href="catalog.html" class="hover:text-green-700 dark:hover:text-green-300">Catálogo</a></li>
+        <li><a href="contact.html" class="hover:text-green-700 dark:hover:text-green-300">Contacto</a></li>
+        <li><a href="map.html" class="hover:text-green-700 dark:hover:text-green-300">Ubicación</a></li>
+        <li><a href="minigame.html" class="hover:text-green-700 dark:hover:text-green-300">Minijuego</a></li>
+        <li><a href="catalog.html" class="text-green-800 dark:text-green-200 underline">Volver al Catálogo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main class="container mx-auto p-6 flex flex-col md:flex-row gap-8">
+    <img id="carImage" class="w-full md:w-1/2 rounded shadow" alt="Imagen del vehículo">
+    <div class="flex flex-col gap-4">
+      <h2 id="carName" class="text-3xl font-bold"></h2>
+      <p id="carDescription" class="text-lg"></p>
+      <ul class="list-disc list-inside text-sm">
+        <li><strong>Marca:</strong> <span id="carBrand"></span></li>
+        <li><strong>Tipo:</strong> <span id="carType"></span></li>
+        <li><strong>Precio:</strong> $<span id="carPrice"></span></li>
+        <li><strong>Motor:</strong> <span id="carEngine"></span></li>
+        <li><strong>Consumo:</strong> <span id="carFuel"></span></li>
+        <li><strong>Interior:</strong> <span id="carInterior"></span></li>
+        <li><strong>Exterior:</strong> <span id="carExterior"></span></li>
+      </ul>
+      <button onclick="window.location.href='comprar.html'" class="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">Comprar</button>
+    </div>
+  </main>
+
+  <script>
+    const cars = [
+    {
+    id: 1,
+    name: 'Sedán Elegante',
+    brand: 'LuxuryMotors',
+    type: 'sedan',
+    price: 45000,
+    image: 'https://hips.hearstapps.com/hmg-prod/images/2023-genesis-g90-108-1659381777.jpg',
+    description: 'Perfecto para la ciudad y viajes largos.',
+    engine: 'V6 Turbo 3.0L',
+    fuel: '12 km/l',
+    interior: 'Asientos de cuero, pantalla táctil de 12"',
+    exterior: 'Luces LED, llantas de aleación 18"'
+  },
+  {
+    id: 2,
+    name: 'SUV Aventura',
+    brand: 'TrailBlazer',
+    type: 'suv',
+    price: 52000,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwbx6f4wVvmtEspy5wobcY-aEH4cI1h40vLQ&s',
+    description: 'Robusto y espacioso para cualquier terreno.',
+    engine: 'V8 5.0L',
+    fuel: '9 km/l',
+    interior: 'Pantalla multimedia, climatizador dual',
+    exterior: 'Parrilla cromada, llantas todoterreno'
+  },
+  {
+    id: 3,
+    name: 'Cupé Deportivo GT',
+    brand: 'Speedster',
+    type: 'coupe',
+    price: 68000,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8vvBdn9PGSSnnmpwpLksmVHVP14k2X1dS8w&s',
+    description: 'Diseño aerodinámico y motor de alto rendimiento.',
+    engine: 'V6 Twin Turbo',
+    fuel: '10 km/l',
+    interior: 'Volante deportivo, asientos bucket',
+    exterior: 'Spoiler trasero, carrocería baja'
+  },
+  {
+    id: 4,
+    name: 'Hatchback Urbano',
+    brand: 'CityRide',
+    type: 'hatchback',
+    price: 21000,
+    image: 'https://panaautos.com.pe/wp-content/uploads/2022/05/diagonal-gray-city.png',
+    description: 'Compacto y eficiente, ideal para el día a día.',
+    engine: 'I4 1.4L',
+    fuel: '18 km/l',
+    interior: 'Radio touch, aire acondicionado',
+    exterior: 'Tamaño compacto, luces halógenas'
+  },
+  {
+    id: 5,
+    name: 'Pick-up Resistente',
+    brand: 'WorkHorse',
+    type: 'pickup',
+    price: 39000,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoqDSU0RHhmDKajo3dCtunysNLa2jW3ILPAw&s',
+    description: 'Gran capacidad de carga y tracción 4x4.',
+    engine: 'Diesel 3.2L',
+    fuel: '8 km/l',
+    interior: 'Pantalla de navegación, asientos resistentes',
+    exterior: 'Cama reforzada, guardafangos grandes'
+  },
+  {
+    id: 6,
+    name: 'Minivan Familiar',
+    brand: 'FamilyVan',
+    type: 'minivan',
+    price: 34000,
+    image: 'https://foton.pe/wp-content/uploads/2025/04/URIS-Slider-VIEW-GRAND-MINIATURA--135x100.jpg',
+    description: 'Confort y espacio para toda la familia.',
+    engine: 'I4 2.5L',
+    fuel: '11 km/l',
+    interior: '8 asientos, sistema de entretenimiento',
+    exterior: 'Puertas corredizas, sensores de parqueo'
+  },
+  {
+    id: 7,
+    name: 'Eléctrico Innovador',
+    brand: 'EcoDrive',
+    type: 'sedan',
+    price: 58000,
+    image: 'https://inchcapelatam.sirv.com/JAC/EJS1KWH30/E-JS1-BLANCO.png?w=720',
+    description: 'Cero emisiones y tecnología de vanguardia.',
+    engine: 'Motor eléctrico 120kW',
+    fuel: 'Autonomía 400 km',
+    interior: 'Pantalla digital, asistente de voz',
+    exterior: 'Diseño futurista, luces LED'
+  },
+  {
+    id: 8,
+    name: 'Jeep Todoterreno',
+    brand: 'RoughRider',
+    type: 'suv',
+    price: 49000,
+    image: 'https://www.jeep.com/content/dam/cross-regional/stellantis/jeep/latam-rol/peru/modelos/2023/wrangler/modelizer-zero/sahara.png.img.2880.png',
+    description: 'Diseñado para conquistar cualquier obstáculo.',
+    engine: '4x4 2.8L Diesel',
+    fuel: '9 km/l',
+    interior: 'Tapicería lavable, brújula digital',
+    exterior: 'Altura elevada, neumáticos de tracción'
+  },
+  {
+    id: 9,
+    name: 'Clásico Vintage',
+    brand: 'OldTimer',
+    type: 'coupe',
+    price: 75000,
+    image: 'https://americancollectors-com.translate.goog/wp-content/uploads/1st-article-photo-1-690x370-1.jpg?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc',
+    description: 'Una joya restaurada con historia.',
+    engine: 'V8 clásico carburado',
+    fuel: '6 km/l',
+    interior: 'Panel de madera, tapiz retro',
+    exterior: 'Carrocería cromada, diseño años 60'
+  }
+    ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const carId = parseInt(urlParams.get('id'));
+    const car = cars.find(c => c.id === carId);
+
+    if (car) {
+      document.getElementById('carName').textContent = `${car.name} (${car.brand})`;
+      document.getElementById('carDescription').textContent = car.description;
+      document.getElementById('carBrand').textContent = car.brand;
+      document.getElementById('carType').textContent = car.type;
+      document.getElementById('carPrice').textContent = car.price.toLocaleString();
+      document.getElementById('carImage').src = car.image;
+      document.getElementById('carEngine').textContent = car.engine;
+      document.getElementById('carFuel').textContent = car.fuel;
+      document.getElementById('carInterior').textContent = car.interior;
+      document.getElementById('carExterior').textContent = car.exterior;
+    }
+
+     // Función para alternar modo oscuro
+  const toggleButton = document.getElementById('toggleDark');
+  const htmlElement = document.documentElement;
+
+  // Cargar modo desde localStorage al iniciar
+  if (localStorage.getItem('theme') === 'dark') {
+    htmlElement.classList.add('dark');
+  }
+
+  toggleButton.addEventListener('click', () => {
+    htmlElement.classList.toggle('dark');
+    if (htmlElement.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
+  </script>
+</body>
+</html>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" class="transition-colors" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto - Concesionario de Autos</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+
+  <header class="bg-green-200 dark:bg-green-700 shadow p-4">
+    <nav class="container mx-auto flex flex-wrap items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="https://us.123rf.com/450wm/themoderncanvas/themoderncanvas1901/themoderncanvas190100012/118845971-icono-de-super-coche-de-concesionario-de-estilo-autom%C3%A1tico-con-silueta-de-icono-de-veh%C3%ADculo-deportiv.jpg" alt="Logo Concesionario" class="w-16 rounded" />
+        <button id="toggleDark" class="bg-gray-300 dark:bg-gray-800 text-black dark:text-white px-3 py-1 rounded hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+          Modo Oscuro
+        </button>
+      </div>
+      <ul class="flex gap-4 text-lg font-semibold flex-wrap">
+        <li><a href="home.html" class="hover:text-green-700 dark:hover:text-green-300">Inicio</a></li>
+        <li><a href="catalog.html" class="hover:text-green-700 dark:hover:text-green-300">Catálogo</a></li>
+        <li><a href="contact.html" class="hover:text-green-700 dark:hover:text-green-300">Contacto</a></li>
+        <li><a href="map.html" class="hover:text-green-700 dark:hover:text-green-300">Ubicación</a></li>
+        <li><a href="minigame.html" class="hover:text-green-700 dark:hover:text-green-300">Minijuego</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 py-10 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-4 text-center">Contáctanos</h1>
+    <p class="mb-8 text-center max-w-xl mx-auto">Estamos aquí para ayudarte a encontrar el auto perfecto. Envíanos un mensaje o visítanos.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="bg-gray-100 dark:bg-gray-800 rounded p-6">
+        <h3 class="text-xl font-semibold mb-2">Teléfono</h3>
+        <p><a href="tel:+1234567890" class="text-green-600 dark:text-green-400 hover:underline">+51 984 484 125</a></p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-800 rounded p-6">
+        <h3 class="text-xl font-semibold mb-2">Email</h3>
+        <p><a href="mailto:info@concesionario.com" class="text-green-600 dark:text-green-400 hover:underline">autostyle@concesionario.com</a></p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-800 rounded p-6">
+        <h3 class="text-xl font-semibold mb-2">Dirección</h3>
+        <p>La Molina, Av. la Fontana 1250, Lima 15024</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-800 rounded p-6">
+        <h3 class="text-xl font-semibold mb-2">Horario</h3>
+        <p>Lunes a Viernes: 9 AM - 6 PM</p>
+        <p>Sábados: 10 AM - 2 PM</p>
+      </div>
+    </div>
+
+    <section>
+      <h2 class="text-3xl font-bold mb-6 text-center">Envíanos un Mensaje</h2>
+      <form id="contactForm" class="space-y-6 max-w-xl mx-auto">
+        <div>
+          <label for="name" class="block mb-1 font-semibold">Nombre:</label>
+          <input type="text" id="name" name="name" required class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" />
+        </div>
+        <div>
+          <label for="email" class="block mb-1 font-semibold">Email:</label>
+          <input type="email" id="email" name="email" required class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" />
+        </div>
+        <div>
+          <label for="subject" class="block mb-1 font-semibold">Asunto:</label>
+          <input type="text" id="subject" name="subject" class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" />
+        </div>
+        <div>
+          <label for="message" class="block mb-1 font-semibold">Mensaje:</label>
+          <textarea id="message" name="message" rows="5" required class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"></textarea>
+        </div>
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition w-full md:w-auto">Enviar Mensaje</button>
+      </form>
+      <div id="formMessage" class="mt-4 text-center text-green-600 dark:text-green-400 font-semibold"></div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-200 dark:bg-gray-800 text-center py-4">
+    <p class="text-sm">&copy; 2025 Concesionario de Autos. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleDark');
+    const htmlEl = document.getElementById('htmlRoot');
+
+    // Aplica el tema guardado al cargar la página
+    if (localStorage.theme === 'dark') {
+      htmlEl.classList.add('dark');
+      toggleBtn.textContent = 'Modo Claro';
+    } else {
+      toggleBtn.textContent = 'Modo Oscuro';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      if (htmlEl.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        toggleBtn.textContent = 'Modo Claro';
+      } else {
+        localStorage.theme = 'light';
+        toggleBtn.textContent = 'Modo Oscuro';
+      }
+    });
+  </script>
+
+</body>
+</html>
